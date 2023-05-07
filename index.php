@@ -3,8 +3,8 @@ include('./lib/function.php');
 $options = array(
     'order_by' => 'id desc'
 );
-$list_user = get_all('danhsach', $options);
-echo header("refresh: 10");
+$users = get_all('danhsach', $options);
+header("refresh: 10");
 
 ?>
 <!doctype html>
@@ -34,7 +34,6 @@ echo header("refresh: 10");
             width: auto;
             overflow: auto;
         }
-
 
 
         .single-product-item {
@@ -69,8 +68,7 @@ echo header("refresh: 10");
     <div class="shop-area pt-110 pb-100 bg-gray mb-95 shop-full-width">
         <div class="ht-product-shop tab-content" style="margin-left: 400px; margin-top:80px; margin-right:20px;">
             <div class="tab-pane active show fade scroll-bar" id="list" role="tabpanel">
-
-                <?php foreach ($list_user as $user) : ?>
+                <?php foreach ($users as $user) : ?>
                     <div class="single-product-item">
                         <div class="row">
                             <div class="col-md-2">
@@ -86,16 +84,16 @@ echo header("refresh: 10");
                         </div>
                     </div>
                 <?php endforeach; ?>
-
             </div>
         </div>
-        <!-- All js here -->
-        <script src="assets/js/vendor/jquery-3.2.1.min.js"></script>
-        <script src="assets/js/popper.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/plugins.js"></script>
-        <script src="assets/js/ajax-mail.js"></script>
-        <script src="assets/js/main.js"></script>
+    </div>
+    <!-- All js here -->
+    <script src="assets/js/vendor/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/ajax-mail.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

@@ -1,10 +1,14 @@
 <?php
+
 include('../lib/function.php');
-if (isset($_GET['user_id'])) $user_id = intval($_GET['user_id']);
-else $user_id = 0;
 
-$user_info = get_a_record('danhsach', $user_id);
+if (isset($_GET['user_id'])) {
+    $userId = intval($_GET['user_id']);
+} else {
+    $userId = 0;
+}
 
+$userInfo = get_a_record('danhsach', $userId);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,33 +23,37 @@ $user_info = get_a_record('danhsach', $user_id);
 </head>
 
 <body>
-    <div class="container" style="text-align: center;">
-        <br>
-        <h2>Edit user #<?= $user_id ?></h2>
-        <form action="submit-edit.php" method="post">
-            <input type="hidden" name="id" value="<?= $user_info['id'] ?>">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Họ tên</label>
-                        <input required type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name" name="name" value="<?= $user_info['ds_name'] ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Đơn vị</label>
-                        <input required name="donvi" type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhạp don vi" value="<?= $user_info['ds_address'] ?>">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+<div class="container" style="text-align: center;">
+    <br>
+    <h2>Edit user #<?= $userId ?></h2>
+    <form action="submit-edit.php" method="post">
+        <input type="hidden" name="id" value="<?= $userInfo['id'] ?>">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Họ tên</label>
+                    <input required type="text" class="form-control" id="exampleInputEmail1"
+                           aria-describedby="emailHelp" placeholder="Enter name" name="name"
+                           value="<?= $userInfo['ds_name'] ?>">
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group form-check">
-                        <label class="form-check-label" for="exampleCheck1">Câu hỏi</label><br>
-                        <textarea required name="desc" id="exampleCheck1" cols="70" rows="6"><?= $user_info['ds_desc'] ?></textarea>
-
-                    </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Đơn vị</label>
+                    <input required name="donvi" type="text" class="form-control" id="exampleInputPassword1"
+                           placeholder="Nhạp don vi" value="<?= $userInfo['ds_address'] ?>">
                 </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group form-check">
+                    <label class="form-check-label" for="exampleCheck1">Câu hỏi</label><br>
+                    <textarea required name="desc" id="exampleCheck1" cols="70"
+                              rows="6"><?= $userInfo['ds_desc'] ?></textarea>
 
-        </form>
-    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 
 </html>
